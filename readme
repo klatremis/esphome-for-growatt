@@ -1,0 +1,15 @@
+# ESPhome for growatt
+ESPhome configuration for monitoring and control of Growatt inverters in Home Assistant.
+This include all addresses i could see relevant from the inverter.
+
+## Supported devices
+Made specially for Growatt
+* SPH3600
+
+## Unsupported devices
+Not made yet
+
+## Requirements
+* ESP32
+* TTL To RS485 Module with automatic flow control
+* Or Lilygo t-can485 (see specific code for this)
