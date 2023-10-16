@@ -1,4 +1,6 @@
 substitutions:
+  name: growatt
+  device_description: Esphome component for Growatt inverters
   device_name:  Growatt_Inverter
   modbus_update_interval: 10s
   update_fast: 10s
@@ -6,91 +8,46 @@ substitutions:
   skip_updates_slow: "6" # with a modbus_update_interval = 10s, this would be once a minute
 
 esphome:
-  name: growatt-inverter-gateway
-  friendly_name: Growatt inverter gateway
-  #   Work-in-progress  
-  # on_boot:
-  #   ## configure controller settings at setup
-  #   ## make sure priority is lower than setup_priority of modbus_controller
-  #   priority: -100
-  #   then:
-  #     - delay: 20s
-  #     - logger.log: "************* Booting esphome growatt *******************"
-  #     - lambda: |-
-  #           std::vector<uint16_t> gridfirst_data = {0,23<<8|59,0,0,0,0,0,0,0};
-  #           std::vector<uint16_t> batteryfirst_data = {100,100,1,0,0,0,0,0,0,0,0,23<<8|59,0,0,0,0,0,0,0};
-  #           std::vector<uint16_t> loadfirst_data = {0,23<<8|59,0,0,0,0,0,0,0};
+  name: ${name}
 
-  #           // Create a modbus command item with the time information as the payload
-  #           esphome::modbus_controller::ModbusCommandItem set_gridfirst_command =
-  #               esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 1080, gridfirst_data.size(), gridfirst_data);
-  #           esphome::modbus_controller::ModbusCommandItem set_batfirst_command =
-  #               esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 1090, batteryfirst_data.size(), batteryfirst_data);
-  #           esphome::modbus_controller::ModbusCommandItem set_loadfirst_command =
-  #               esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 1110, loadfirst_data.size(), loadfirst_data);
-            
-  #           // Submit the command to the send queue
-  #           controller->queue_command(set_gridfirst_command);
-  #           controller->queue_command(set_batfirst_command);
-  #           controller->queue_command(set_loadfirst_command);
-  #           ESP_LOGI("Lambda","Setting Grid/Battery/Load");
-esp8266:
-  board: d1_mini
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
 
-# Enable logging
 logger:
-  baud_rate: 0
 
-# Enable Home Assistant API
 api:
-  encryption:
-    key: "xxxxxxx"
 
 ota:
-  password: "xxxxxxx"
 
 wifi:
-  networks:
-  - ssid: "IOT-LAN"
-    password: "xxxxxxx"
-    hidden: true
-  use_address: 192.168.10.35
-  domain: .iotlan
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
   ap:
-    ssid: "Growatt Fallback Hotspot"
-    password: "xxxxxx"
+    ssid: ${name}
 
-# captive_portal:
-
-time:
-  - platform: homeassistant
-    id: homeassistant_time
+captive_portal:
 
 uart:
   id: mod_bus
-  tx_pin: 5
-  rx_pin: 4
+  tx_pin: 17
+  rx_pin: 16
   baud_rate: 9600
-  # data_bits: 8
-  # parity: NONE
-  # stop_bits: 1
-  
+  stop_bits: 1
+ 
 modbus:
   id: modbus1
-  uart_id: mod_bus
-  # flow_control_pin: 14
-  
+# flow_control_pin: 4 #for use when you use a rs485 board without auto flow control. Like the rs485 max board.
+ 
 modbus_controller:
-  - id: growatt
+  - id: ${modbus_controller_id}
     address: 0x1
     modbus_id: modbus1
     setup_priority: -10
-    update_interval: $modbus_update_interval
-    command_throttle: 1s
+    update_interval: ${modbus_update_interval}
     
 text_sensor:
-
   - platform: template
     name: "${device_name} Status state"
     icon: mdi:eye
