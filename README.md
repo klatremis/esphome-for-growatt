@@ -13,7 +13,7 @@ Made specially for Growatt inverters
 
 ## Requirements
 * ESP32 with TTL To RS485 Module with automatic flow control
-* Or Lilygo t-can485 board
+* Or Lilygo t-can485 board (use lilygo config)
 
 ## Installation
 1. Create your esp32 in esphome in home assistant
