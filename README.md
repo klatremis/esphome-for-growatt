@@ -1,4 +1,4 @@
-# ESPhome for deye (still under development)
+# ESPhome for Growatt by Klatremis (still under development)
 ESPhome configuration for monitoring and control of Growatt inverters in Home Assistant.
 This include all addresses i could see relevant from the inverter.
 
