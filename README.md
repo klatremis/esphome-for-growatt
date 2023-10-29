@@ -2,18 +2,23 @@
 ESPhome configuration for monitoring and control of Growatt inverters in Home Assistant.
 This include all addresses i could see relevant from the inverter.
 
-## Supported devices
-Made specially for Growatt inverters
+* For DIY generic esp32 hardware, use "esp32" and the wiring below
+* For KlatremisHW, use "klatremishw" code
 
+## Supported devices
 ### SPH inverters
 * SPH3600 (not confirmed)
 * SPH8000TL3 (not confirmed)
+* SPH10000TL3 (not confirmed)
+
 ### MOD inverters
 * Comming soon
 
 ## Requirements
-* ESP32 with TTL To RS485 Module with automatic flow control
-* Or Lilygo t-can485 board (use lilygo config)
+* ESP32
+* TTL To RS485 Module with automatic flow control
+* or
+* KlatremisHW Basic/Lilygo t-can 485, *For now, only danish customers: https://badenergy.dk/product-category/inverter/inverter-styring/
 
 ## Installation
 1. Create your esp32 in esphome in home assistant
@@ -23,6 +28,7 @@ Made specially for Growatt inverters
 5. Edit the sensors in the config if you like
 6. Upload wireless
 
-## Hardware diagram
-RX / TX between esp and ttl converter way have to be swapped. This seems to be a little different from espboard to espboard.
+## Wiring of generic esp32 & TTL module
+RX / TX between esp and ttl converter may have to be swapped. This seems to be a little different from espboard to espboard.
 If it dosent communicate(RX/TX led both blinking) Try swap rx/tx on the esp.
+ ![image](https://github.com/klatremis/esphome-for-bms/blob/main/wiring.jpg)
