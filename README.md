@@ -8,11 +8,19 @@ This include all addresses i could see relevant from the inverter.
 ## Supported devices
 ### SPH inverters
 * SPH3600 (not confirmed)
-* SPH8000TL3 (not confirmed)
 * SPH10000TL3 (not confirmed)
 
+### MIC inverters
+* (not confirmed)
+
 ### MOD inverters
-* Comming soon
+* (not confirmed)
+
+### MID inverters
+* (not confirmed)
+
+### MAX inverters
+* (not confirmed)
 
 ## Requirements
 * ESP32
