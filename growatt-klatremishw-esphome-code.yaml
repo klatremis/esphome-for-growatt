@@ -1,8 +1,12 @@
 substitutions:
-  name: Growatt
-  device_type: growatt #name ofr all sensors in Home assistant
+  name: growatt
+  device_type: growatt #name for all sensors in Home assistant
   device_description: "Esphome for growatt"
   modbus_controller_id: controller1
+  modbus_update_interval: 15s #normal update
+  skip_updates_slow: "6"  #how many times to skip normal update for slow updating sensors
+  update_fast: 10s
+  update_slow: 60s
 
 esphome:
   name: ${name}
@@ -63,7 +67,7 @@ modbus_controller:
     address: 0x1
     modbus_id: modbus1
     setup_priority: -10
-    update_interval: 15sec
+    update_interval: ${modbus_update_interval}
 
 sensor:
   - platform: modbus_controller
