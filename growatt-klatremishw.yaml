@@ -8,8 +8,15 @@ substitutions:
   update_fast: 10s
   update_slow: 60s
 
+dashboard_import:
+  package_import_url: github://klatremis/esphome-for-growatt/growatt-klatremishw.yaml@main
+  import_full_config: true
+
 esphome:
   name: ${name}
+  project:
+    name: "klatremis.grwatthw"
+    version: "1.0"
   
   on_boot: 
     - priority: 600
@@ -47,6 +54,8 @@ wifi:
     ssid: ${name}
     
 captive_portal:
+
+improv_serial:
 
 web_server:
   port: 80
