@@ -7,7 +7,7 @@ This include all addresses i could see relevant from the inverter.
 
 ## Supported devices
 ### SPH inverters
-* SPH3600 (not confirmed)
+* SPH3600 (confirmed)
 * SPH10000TL3 (not confirmed)
 
 ### MIC inverters
