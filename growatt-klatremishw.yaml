@@ -1,6 +1,6 @@
 substitutions:
   name: growatt
-  device_type: growatt #name for all sensors in Home assistant
+  device_name: growatt #name for all sensors in Home assistant
   device_description: "Esphome for growatt"
   modbus_controller_id: controller1
   modbus_update_interval: 15s #normal update
