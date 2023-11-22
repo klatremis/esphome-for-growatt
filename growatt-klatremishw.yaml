@@ -434,6 +434,42 @@ sensor:
     filters:
     - multiply: 0.1   
 
+  - platform: modbus_controller #added 22-11-2023
+    name: "${device_name} BMS Battery Voltage"
+    skip_updates: $skip_updates_slow
+    address: 1087
+    register_type: "read"
+    unit_of_measurement: "V"
+    icon: mdi:battery-positive
+    value_type: U_WORD
+    accuracy_decimals: 0
+    filters:
+    - multiply: 0.1   
+
+  - platform: modbus_controller #added 22-11-2023
+    name: "${device_name} BMS Battery Current"
+    skip_updates: $skip_updates_slow
+    address: 1088
+    register_type: "read"
+    unit_of_measurement: "A"
+    icon: mdi:battery-positive
+    value_type: U_WORD
+    accuracy_decimals: 0
+    filters:
+    - multiply: 0.1
+
+  - platform: modbus_controller #added 22-11-2023
+    name: "${device_name} BMS Battery Temperature"
+    skip_updates: $skip_updates_slow
+    address: 1089
+    register_type: "read"
+    unit_of_measurement: "°C"
+    icon: mdi:temperature-celsius
+    value_type: U_WORD
+    accuracy_decimals: 0
+    filters:
+    - multiply: 0.1    
+
 number:
   - platform: modbus_controller
     name: "${device_name} Discharge SoC"
