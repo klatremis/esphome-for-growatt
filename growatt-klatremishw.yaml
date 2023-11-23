@@ -14,7 +14,7 @@ dashboard_import:
 
 esphome:
   name: ${name}
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
   project:
     name: "klatremis.grwatthw"
     version: "1.0"
