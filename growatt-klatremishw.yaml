@@ -521,7 +521,7 @@ number:
     name: "${device_name} Active power rate"
     address: 3
     value_type: U_WORD
-    unit_of_measurement: %
+    unit_of_measurement: "%"
     skip_updates: $skip_updates_slow    
 
   - platform: modbus_controller
