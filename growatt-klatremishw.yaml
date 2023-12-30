@@ -522,7 +522,9 @@ number:
     address: 3
     value_type: U_WORD
     unit_of_measurement: "%"
-    skip_updates: $skip_updates_slow    
+    skip_updates: $skip_updates_slow
+    min_value: 0
+    max_value: 255    
 
   - platform: modbus_controller
     name: "${device_name} Discharge SoC"
