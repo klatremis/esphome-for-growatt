@@ -213,7 +213,7 @@ sensor:
     name: "${device_name} Grid Frequency"
     skip_updates: $skip_updates_slow
     address: 37
-    register_type: holding
+    register_type: "read"
     unit_of_measurement: "Hz"
     device_class: frequency
     value_type: U_WORD
@@ -225,7 +225,7 @@ sensor:
     name: "${device_name} Grid Voltage"
     skip_updates: $skip_updates_slow
     address: 38
-    register_type: holding
+    register_type: "read"
     unit_of_measurement: "V"
     device_class: voltage
     value_type: U_WORD
@@ -237,7 +237,7 @@ sensor:
     name: "${device_name} Grid Current"
     skip_updates: $skip_updates_slow
     address: 39
-    register_type: holding
+    register_type: "read"
     unit_of_measurement: "A"
     device_class: current
     value_type: U_WORD
